@@ -27,7 +27,7 @@ t1 is the timestep after t. This is used for the predictions of the mpc and defi
 I chose the values `N=10` and `dt=0.1` that worked well for my model.
 
 
-# Processing Pipeline
+## Processing Pipeline
 After N and dt is defined, the first thing I did was to transform the given waypoints into the vehicle coordinates (at vehicles origin, with zero orientation angle).
 
 ```
