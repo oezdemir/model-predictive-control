@@ -23,6 +23,7 @@ epsi[t+1] = psi[t] - psi_des + v[t]/Lf * delta[t] * dt;
 ```
 
 t1 is the timestep after t. This is used for the predictions of the mpc and defined based on the user input for timestep length `N` and elapsed duration `dt`.
+Lf is a measure for the distance between the front of the vehicle and its center of gravity. 
 
 I chose the values `N=10` and `dt=0.1` that worked well for my model.
 
@@ -43,6 +44,7 @@ At each iteration a new trajectory is calculated of which we can use the first p
 ## Results
 
 With this controller the vehicle is able to drive safely around the simulated track reaching the target speed of 100 mph. Without the added delay of 100ms higher speeds are possible. You can find the [video here](assets/mpc.m4v). The yellow line describes the waypoints, and the green is the predicted path give the state that the vehicle follows.
+To deal with the 100 ms delay I didn't have to do anything in addition. The model is very robust against delays at this scale. One way to mitigate the effects would be to predict the vehicle state at the future time at +100 ms, and use this state as the vehicle state as input to the model. This would let the model do the calculations from the predicted future state. 
 
 
 
